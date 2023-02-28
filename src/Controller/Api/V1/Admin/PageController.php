@@ -4,7 +4,7 @@ namespace App\Controller\Api\V1\Admin;
 
 use App\Attribute\RequestBody;
 use App\Model\Request\PageRequest;
-use App\Services\PageService;
+use App\Services\Admin\PageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

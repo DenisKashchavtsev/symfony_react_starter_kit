@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Page;
+use App\Utils\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -34,7 +34,7 @@ class PageRepository extends ServiceEntityRepository
             ->setMaxResults(self::LIMIT)
             ->setFirstResult($page === 1 ? 0 : $page * self::LIMIT + 1);
 
-        return new Paginator($query, false);
+        return new Paginator($query);
     }
 
     public function save(Page $entity, bool $flush = false): void

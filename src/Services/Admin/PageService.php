@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Admin;
 
 use App\Entity\Page;
 use App\Model\Request\PageRequest;
+use App\Model\Response\PaginatorResponse;
 use App\Repository\PageRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 final readonly class PageService
 {
@@ -13,9 +13,16 @@ final readonly class PageService
     {
     }
 
-    public function getPage(int $page): Paginator
+    public function getPage(int $page): PaginatorResponse
     {
-        return $this->pageRepository->getPage($page);
+        $paginator = $this->pageRepository->getPage($page);
+
+        return (new PaginatorResponse())
+            ->setData($paginator->getData())
+            ->setMeta(
+                $paginator->getResultCount(),
+                $paginator->getTotalPages()
+            );
     }
 
     public function getOne(int $id): Page
