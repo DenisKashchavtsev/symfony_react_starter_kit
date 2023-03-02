@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as OrmPaginator;
 
 class Paginator
@@ -10,7 +11,7 @@ class Paginator
     private int $totalPages;
     private array $data;
 
-    public function __construct($query)
+    public function __construct(QueryBuilder $query)
     {
         $ormPaginator = new OrmPaginator($query, false);
 
