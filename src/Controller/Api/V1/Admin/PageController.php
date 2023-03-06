@@ -47,7 +47,7 @@ class PageController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: 'DELETE')]
     public function delete(int $id): JsonResponse
     {
-        $this->pageService->delete($id);
+        $this->pageService->remove($id);
 
         return $this->json([], Response::HTTP_NO_CONTENT);
     }

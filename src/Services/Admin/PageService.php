@@ -66,7 +66,7 @@ final readonly class PageService
         return $entity;
     }
 
-    public function delete(int $id): void
+    public function remove(int $id): void
     {
         $this->pageRepository->remove($this->getOne($id), true);
     }
