@@ -54,4 +54,4 @@ jobs:
           cp .env.ci .env.test
           cp .env.ci .env
           cp phpunit.ci.xml phpunit.xml
-          composer test
+          php bin/phpunit

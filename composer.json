@@ -1,4 +1,6 @@
 {
+    "name": "deniskashchavtsev/symfony_react_starter_kit",
+    "description": "",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -85,8 +87,5 @@
         "symfony/css-selector": "6.0.*",
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.2"
-    },
-    "test": [
-        "php bin/phpunit"
-    ]
+    }
 }
