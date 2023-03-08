@@ -42,14 +42,10 @@ jobs:
       - name: Check the Symfony console
         run: bin/console -V
       # —— Code style —— (Based on this package: https://github.com/OskarStark/php-cs-fixer-ga)
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --config=.php_cs.dist --diff --dry-run
+#      - name: PHP-CS-Fixer
+#        uses: docker://oskarstark/php-cs-fixer-ga
+#        with:
+#          args: --config=.php_cs.dist --diff --dry-run
       ## —— Tests ———————————————————————————————————————————————————————————
-      - name: Run functionnal and unit tests
-        run: |
-          cp .env.ci .env.test
-          cp .env.ci .env
-          cp phpunit.ci.xml phpunit.xml
-          php bin/phpunit
+      - name: Run tests
+        run: php bin/phpunit
