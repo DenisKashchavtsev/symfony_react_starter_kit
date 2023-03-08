@@ -85,5 +85,8 @@
         "symfony/css-selector": "6.0.*",
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.2"
-    }
+    },
+    "test": [
+        "php bin/phpunit"
+    ]
 }
