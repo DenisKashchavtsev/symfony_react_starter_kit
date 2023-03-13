@@ -1,8 +1,11 @@
+
 name: Tests
+
 on: [push]
+
 jobs:
   tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
@@ -41,11 +44,6 @@ jobs:
       # —— Symfony ——————————————————————————————————————————————————————————
       - name: Check the Symfony console
         run: bin/console -V
-      # —— Code style —— (Based on this package: https://github.com/OskarStark/php-cs-fixer-ga)
-#      - name: PHP-CS-Fixer
-#        uses: docker://oskarstark/php-cs-fixer-ga
-#        with:
-#          args: --config=.php_cs.dist --diff --dry-run
       ## —— Tests ———————————————————————————————————————————————————————————
       - name: Run tests
         run: php bin/phpunit
