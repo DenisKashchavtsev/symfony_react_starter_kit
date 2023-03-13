@@ -3,7 +3,6 @@
 namespace App\Tests\Repository;
 
 use App\Entity\Page;
-use App\Repository\PageRepository;
 use App\Tests\AbstractRepositoryTest;
 use App\Utils\Paginator;
 use Doctrine\ORM\EntityRepository;
@@ -11,6 +10,7 @@ use Doctrine\ORM\EntityRepository;
 class PageRepositoryTest extends AbstractRepositoryTest
 {
     private EntityRepository $pageRepository;
+
     protected function setUp(): void
     {
         parent::setUp();

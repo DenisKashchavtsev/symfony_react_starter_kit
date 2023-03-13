@@ -11,8 +11,6 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Throwable;
-use Generator;
 
 readonly class RequestBodyArgumentResolver implements ArgumentValueResolverInterface
 {
@@ -25,7 +23,7 @@ readonly class RequestBodyArgumentResolver implements ArgumentValueResolverInter
         return count($argument->getAttributes(RequestBody::class, ArgumentMetadata::IS_INSTANCEOF)) > 0;
     }
 
-    public function resolve(Request $request, ArgumentMetadata $argument): Generator
+    public function resolve(Request $request, ArgumentMetadata $argument): \Generator
     {
         try {
             $model = $this->serializer->deserialize(
@@ -33,7 +31,7 @@ readonly class RequestBodyArgumentResolver implements ArgumentValueResolverInter
                 $argument->getType(),
                 JsonEncoder::FORMAT
             );
-        } catch (Throwable $throwable) {
+        } catch (\Throwable $throwable) {
             throw new RequestBodyConvertException($throwable);
         }
 

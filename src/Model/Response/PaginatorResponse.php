@@ -28,8 +28,7 @@ class PaginatorResponse
     public function setMeta(
         int $resultCount,
         string $totalPages
-    ): PaginatorResponse
-    {
+    ): PaginatorResponse {
         $this->meta = [
             'result_count' => $resultCount,
             'total_pages' => $totalPages,

@@ -7,7 +7,7 @@ use App\Tests\AbstractControllerTest;
 
 class PageControllerTest extends AbstractControllerTest
 {
-    const URL = '/api/v1/pages/';
+    public const URL = '/api/v1/pages/';
 
     protected function setUp(): void
     {
@@ -28,14 +28,14 @@ class PageControllerTest extends AbstractControllerTest
                 'meta' => [
                     'result_count',
                     'total_pages',
-                ]
+                ],
             ]);
     }
 
     public function testShow()
     {
-        $this->client->request('get', self::URL . '1');
-        
+        $this->client->request('get', self::URL.'1');
+
         $this->assertResponseStatusCodeSame(200);
         $this->assertJsonDocumentMatchesSchema(
             json_decode($this->client->getResponse()->getContent()),
@@ -55,7 +55,7 @@ class PageControllerTest extends AbstractControllerTest
             'name' => 'Name',
             'content' => '<p>Content</p>',
             'url' => 'test-url',
-            'status'=> true
+            'status' => true,
         ]));
 
         $this->assertResponseStatusCodeSame(201);
@@ -66,18 +66,18 @@ class PageControllerTest extends AbstractControllerTest
                 'name',
                 'content',
                 'url',
-                'status'
+                'status',
             ]
         );
     }
 
     public function testUpdate()
     {
-        $this->client->request('put', self::URL . '1', [], [], [], json_encode([
+        $this->client->request('put', self::URL.'1', [], [], [], json_encode([
             'name' => 'Name',
             'content' => '<p>Content</p>',
             'url' => 'test-url',
-            'status'=> true
+            'status' => true,
         ]));
 
         $this->assertResponseStatusCodeSame(200);
@@ -88,14 +88,14 @@ class PageControllerTest extends AbstractControllerTest
                 'name',
                 'content',
                 'url',
-                'status'
+                'status',
             ]
         );
     }
 
     public function testDelete()
     {
-        $this->client->request('delete', self::URL . '1');
+        $this->client->request('delete', self::URL.'1');
 
         $this->assertResponseStatusCodeSame(204);
     }
