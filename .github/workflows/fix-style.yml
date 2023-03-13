@@ -27,6 +27,9 @@ jobs:
       - name: Fix Style
         run: ./vendor/bin/php-cs-fixer fix --diff --allow-risky=yes
 
+      - name: Pull Remote Changes
+        run: git pull
+
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
