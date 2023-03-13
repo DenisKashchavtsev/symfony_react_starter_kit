@@ -6,6 +6,9 @@ on: [push]
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: '8.2'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
