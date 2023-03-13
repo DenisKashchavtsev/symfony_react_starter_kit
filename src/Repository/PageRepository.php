@@ -17,7 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PageRepository extends ServiceEntityRepository
 {
-    const LIMIT = 25;
+    public const LIMIT = 25;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -32,7 +32,7 @@ class PageRepository extends ServiceEntityRepository
             ->from(Page::class, 'p')
             ->orderBy('p.id')
             ->setMaxResults(self::LIMIT)
-            ->setFirstResult($page === 1 ? 0 : $page * self::LIMIT + 1);
+            ->setFirstResult(1 === $page ? 0 : $page * self::LIMIT + 1);
 
         return new Paginator($query);
     }
