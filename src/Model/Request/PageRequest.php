@@ -22,8 +22,8 @@ class PageRequest
     #[Assert\Type(type: ['string', 'null'])]
     private ?string $meta_description = null;
 
-    #[Assert\NotBlank]
-    private bool $status;
+    #[Assert\Type(type: ['string', 'bool'])]
+    private bool $status = true;
 
     public function getName(): string
     {
@@ -80,8 +80,12 @@ class PageRequest
         return $this->status;
     }
 
-    public function setStatus(bool $status): void
+    public function setStatus(bool|string $status): void
     {
-        $this->status = $status;
+        if (is_string($status)) {
+            $this->status = $status === '1';
+        } else {
+            $this->status = $status;
+        }
     }
 }
