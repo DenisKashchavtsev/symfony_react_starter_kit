@@ -19,6 +19,10 @@ function Header() {
         {
             "name": "Contact",
             "url" :"/contact",
+        },,
+        {
+            "name": "Admin Panel",
+            "url" :"/admin",
         },
 
     ];
@@ -33,7 +37,7 @@ function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">Binaryboxtuts</Link>
+            <Link to="/" className="navbar-brand">Symfony react spa</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
