@@ -1,18 +1,18 @@
 import React, {useEffect} from 'react';
-import { Link, useLocation } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function Header() {
     const location = useLocation();
     const pageLinks = [
         {
             "name": "Pages",
-            "url" :"/pages",
+            "url": "/pages",
         },
     ];
 
     useEffect(() => {
-        pageLinks.map((page)=>{
-            if(page.url == location.pathname) {
+        pageLinks.map((page) => {
+            if (page.url == location.pathname) {
                 document.title = page.name;
             }
         });
@@ -21,7 +21,9 @@ function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">Symfony react spa (Admin)</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
 

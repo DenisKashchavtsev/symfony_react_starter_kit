@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect} from "react";
 import Layout from "../../../components/admin/Layout";
 import Header from "../../../components/admin/Header";
 import {useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {getPages} from "../../../actions/page";
 
 function PageList() {
@@ -24,7 +24,7 @@ function PageList() {
                 </div>
                 <div className="row">
                     <div className="two columns">
-                        <button className="button-primary" >
+                        <button className="button-primary">
                             <Link to={'/pages/create'}>Add</Link>
                         </button>
                     </div>
@@ -41,7 +41,7 @@ function PageList() {
                         </tr>
                         </thead>
                         <tbody>
-                        { Array.isArray(pages) ? pages.map( page => (
+                        {Array.isArray(pages) ? pages.map(page => (
                             <tr>
                                 <td>{page.id}</td>
                                 <td>{page.name}</td>
@@ -49,7 +49,9 @@ function PageList() {
                                 <td>{page.status ? 'Enable' : 'Disable'}</td>
                                 <td>
                                     <button>Delete</button>
-                                    <Link to={`/pages/${page.id}/edit`}><button>Edit</button></Link>
+                                    <Link to={`/pages/${page.id}/edit`}>
+                                        <button>Edit</button>
+                                    </Link>
                                 </td>
                             </tr>
                         )) : 'List is empty'}

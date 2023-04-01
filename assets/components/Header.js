@@ -1,35 +1,35 @@
 import React, {useEffect} from 'react';
-import { Link, useLocation } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function Header() {
     const location = useLocation();
     const pageLinks = [
         {
             "name": "Home",
-            "url" :"/",
+            "url": "/",
         },
         {
             "name": "Blog",
-            "url" :"/blog",
+            "url": "/blog",
         },
         {
             "name": "About",
-            "url" :"/about",
+            "url": "/about",
         },
         {
             "name": "Contact",
-            "url" :"/contact",
-        },,
+            "url": "/contact",
+        }, ,
         {
             "name": "Admin Panel",
-            "url" :"/admin",
+            "url": "/admin",
         },
 
     ];
 
     useEffect(() => {
-        pageLinks.map((page)=>{
-            if(page.url == location.pathname) {
+        pageLinks.map((page) => {
+            if (page.url == location.pathname) {
                 document.title = page.name;
             }
         });
@@ -38,7 +38,9 @@ function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">Symfony react spa</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
 

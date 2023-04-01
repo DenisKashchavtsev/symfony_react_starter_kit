@@ -1,12 +1,10 @@
-import {
-    SET_ERRORS, RESET_ERRORS,
-} from "../actions/types";
+import {RESET_ERRORS, SET_ERRORS,} from "../actions/types";
 
 const initialState = [];
 
 function errorsReducer(errors = initialState, action) {
 
-    const { type, payload } = action;
+    const {type, payload} = action;
 
     switch (type) {
 

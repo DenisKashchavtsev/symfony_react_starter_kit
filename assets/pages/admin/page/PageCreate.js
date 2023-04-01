@@ -19,7 +19,7 @@ function PageCreate() {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(createPage({ name, url, status }))
+        dispatch(createPage({name, url, status}))
     }
 
     return (
@@ -41,9 +41,9 @@ function PageCreate() {
                                 onChange={handleName}
                                 value={name}
                             />
-                            { errors && errors.name ?
-                                <div style={{ color: 'red'}}>{errors.name}</div>
-                             : '' }
+                            {errors && errors.name ?
+                                <div style={{color: 'red'}}>{errors.name}</div>
+                                : ''}
                         </div>
 
                         <div>
@@ -55,9 +55,9 @@ function PageCreate() {
                                 onChange={handleUrl}
                                 value={url}
                             />
-                            { errors && errors.url ?
-                                <div style={{ color: 'red'}}>{errors.url}</div>
-                                : '' }
+                            {errors && errors.url ?
+                                <div style={{color: 'red'}}>{errors.url}</div>
+                                : ''}
                         </div>
 
                         <div>
@@ -70,9 +70,9 @@ function PageCreate() {
                                 <option value="1">Enable</option>
                                 <option value="0">Disable</option>
                             </select>
-                            { errors && errors.status ?
-                                <div style={{ color: 'red'}}>{errors.status}</div>
-                                : '' }
+                            {errors && errors.status ?
+                                <div style={{color: 'red'}}>{errors.status}</div>
+                                : ''}
                         </div>
 
                         <div>

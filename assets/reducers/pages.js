@@ -1,16 +1,10 @@
-import {
-    GET_PAGES,
-    GET_PAGE,
-    CREATE_PAGE,
-    UPDATE_PAGE,
-    DELETE_PAGE,
-} from "../actions/types";
+import {CREATE_PAGE, DELETE_PAGE, GET_PAGE, GET_PAGES, UPDATE_PAGE,} from "../actions/types";
 
 const initialState = [];
 
 function pagesReducer(pages = initialState, action) {
 
-    const { type, payload } = action;
+    const {type, payload} = action;
 
     switch (type) {
 
@@ -36,7 +30,7 @@ function pagesReducer(pages = initialState, action) {
             });
 
         case DELETE_PAGE:
-            return pages.filter(({ id }) => id !== payload.id);
+            return pages.filter(({id}) => id !== payload.id);
 
         default:
             return pages;

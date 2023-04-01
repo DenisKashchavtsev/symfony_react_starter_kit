@@ -1,9 +1,4 @@
-import {
-    GET_PAGES,
-    CREATE_PAGE,
-    UPDATE_PAGE,
-    DELETE_PAGE, RESET_ERRORS, SET_ERRORS, GET_PAGE,
-} from "./types";
+import {CREATE_PAGE, DELETE_PAGE, GET_PAGE, GET_PAGES, RESET_ERRORS, SET_ERRORS, UPDATE_PAGE,} from "./types";
 
 import PageDataService from "../services/page.service";
 
@@ -80,7 +75,7 @@ export const deletePage = (id) => async (dispatch) => {
 
         dispatch({
             type: DELETE_PAGE,
-            payload: { id },
+            payload: {id},
         });
     } catch (err) {
         console.log(err);
