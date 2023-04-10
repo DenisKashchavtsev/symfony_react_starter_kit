@@ -83,7 +83,7 @@ class PageRequest
     public function setStatus(bool|string $status): void
     {
         if (is_string($status)) {
-            $this->status = $status === '1';
+            $this->status = '1' === $status;
         } else {
             $this->status = $status;
         }
