@@ -20,10 +20,7 @@ export const getPage = (id) => async (dispatch) => {
     try {
         const res = await PageDataService.get(id);
 
-        dispatch({
-            type: GET_PAGE,
-            payload: res.data,
-        });
+        return Promise.resolve(res.data);
     } catch (err) {
         console.log(err);
     }

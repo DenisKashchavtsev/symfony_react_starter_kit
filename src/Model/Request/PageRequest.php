@@ -17,10 +17,10 @@ class PageRequest
     private string $url;
 
     #[Assert\Type(type: ['string', 'null'])]
-    private ?string $meta_title = null;
+    private ?string $metaTitle = null;
 
     #[Assert\Type(type: ['string', 'null'])]
-    private ?string $meta_description = null;
+    private ?string $metaDescription = null;
 
     #[Assert\Type(type: ['string', 'bool'])]
     private bool $status = true;
@@ -57,22 +57,22 @@ class PageRequest
 
     public function getMetaTitle(): ?string
     {
-        return $this->meta_title;
+        return $this->metaTitle;
     }
 
-    public function setMetaTitle(?string $meta_title): void
+    public function setMetaTitle(?string $metaTitle): void
     {
-        $this->meta_title = $meta_title;
+        $this->metaTitle = $metaTitle;
     }
 
     public function getMetaDescription(): ?string
     {
-        return $this->meta_description;
+        return $this->metaDescription;
     }
 
-    public function setMetaDescription(?string $meta_description): void
+    public function setMetaDescription(?string $metaDescription): void
     {
-        $this->meta_description = $meta_description;
+        $this->metaDescription = $metaDescription;
     }
 
     public function isStatus(): bool

@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Layout from "../../../components/admin/Layout";
 import Header from "../../../components/admin/Header";
 import {useDispatch, useSelector} from "react-redux";
-import {createPage} from "../../../actions/page";
+import {createPage, getPage, updatePage} from "../../../actions/page";
+import {useParams} from "react-router-dom";
 
-function PageCreate() {
+function PageEdit() {
 
     const [page, setPage] = useState({
         name: '',
@@ -15,6 +16,14 @@ function PageCreate() {
         status: true,
     })
 
+    const params = useParams();
+
+    useEffect(() => {
+        dispatch(getPage(params.id)).then(res => {
+            setPage(res);
+        });
+    }, []);
+
     const errors = useSelector(state => state.errors)
 
     const handlePage = (e, field) => {
@@ -24,7 +33,7 @@ function PageCreate() {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(createPage(page))
+        dispatch(updatePage(params.id, page))
     }
 
     return (
@@ -60,7 +69,7 @@ function PageCreate() {
                                 value={page.content}
                             />
                             {errors && errors.content ?
-                                <div style={{color: 'red'}}>{errors.content}</div>
+                                <div style={{color: 'red'}}>{errors.name}</div>
                                 : ''}
                         </div>
 
@@ -131,4 +140,4 @@ function PageCreate() {
     );
 }
 
-export default PageCreate;
+export default PageEdit;
