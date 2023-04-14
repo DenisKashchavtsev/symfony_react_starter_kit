@@ -6,6 +6,7 @@ use App\Entity\Page;
 use App\Utils\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<Page>
@@ -17,24 +18,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PageRepository extends ServiceEntityRepository
 {
-    public const LIMIT = 25;
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Page::class);
     }
 
+    /**
+     * @throws Exception
+     */
     public function getPage($page = 1): Paginator
     {
         $query = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('p')
             ->from(Page::class, 'p')
-            ->orderBy('p.id')
-            ->setMaxResults(self::LIMIT)
-            ->setFirstResult(1 === $page ? 0 : $page * self::LIMIT + 1);
+            ->orderBy('p.id');
 
-        return new Paginator($query);
+        return new Paginator($query, $page);
     }
 
     public function save(Page $entity, bool $flush = false): void

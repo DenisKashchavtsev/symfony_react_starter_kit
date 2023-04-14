@@ -4,34 +4,40 @@ namespace App\Utils;
 
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as OrmPaginator;
+use Exception;
 
 class Paginator
 {
-    private ?int $resultCount;
-    private int $totalPages;
-    private array $data;
+    private OrmPaginator $ormPaginator;
+    private ?int $resultCount = null;
 
-    public function __construct(QueryBuilder $query)
+    /**
+     * @throws Exception
+     */
+    public function __construct(QueryBuilder $query, int $page, int $limit = 25)
     {
-        $ormPaginator = new OrmPaginator($query, false);
+        $query = $query->setMaxResults($limit)
+            ->setFirstResult($page === 1 ? 0 : ($page - 1) * $limit);
 
-        $this->resultCount = $ormPaginator->count();
-        $this->totalPages = (int) ceil($ormPaginator->count() / $ormPaginator->getQuery()->getMaxResults());
-        $this->data = $ormPaginator->getIterator()->getArrayCopy();
-    }
-
-    public function getResultCount(): ?int
-    {
-        return $this->resultCount;
+        $this->ormPaginator = new OrmPaginator($query, false);
     }
 
     public function getTotalPages(): int
     {
-        return $this->totalPages;
+        return (int)ceil($this->getResultCount() / $this->ormPaginator->getQuery()->getMaxResults());
     }
 
-    public function getData(): array
+    public function getResultCount(): int
     {
-        return $this->data;
+        if (is_null($this->resultCount)) {
+            $this->resultCount = $this->ormPaginator->count();
+        }
+
+        return $this->resultCount;
+    }
+
+    public function getData(): iterable
+    {
+        return $this->ormPaginator->getIterator()->getArrayCopy();
     }
 }

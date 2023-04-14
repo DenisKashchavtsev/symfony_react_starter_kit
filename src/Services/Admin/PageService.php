@@ -25,26 +25,9 @@ final readonly class PageService
             );
     }
 
-    public function getOne(int $id): Page
-    {
-        return $this->pageRepository->find($id);
-    }
-
     public function create(PageRequest $request): Page
     {
         $entity = new Page();
-
-        $this->pageRepository->save(
-            $this->filler($entity, $request),
-            true
-        );
-
-        return $entity;
-    }
-
-    public function update(int $id, PageRequest $request): Page
-    {
-        $entity = $this->getOne($id);
 
         $this->pageRepository->save(
             $this->filler($entity, $request),
@@ -64,6 +47,23 @@ final readonly class PageService
             ->setStatus($request->isStatus());
 
         return $entity;
+    }
+
+    public function update(int $id, PageRequest $request): Page
+    {
+        $entity = $this->getOne($id);
+
+        $this->pageRepository->save(
+            $this->filler($entity, $request),
+            true
+        );
+
+        return $entity;
+    }
+
+    public function getOne(int $id): Page
+    {
+        return $this->pageRepository->find($id);
     }
 
     public function remove(int $id): void

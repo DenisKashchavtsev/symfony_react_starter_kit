@@ -11,17 +11,10 @@ class PageRepositoryTest extends AbstractRepositoryTest
 {
     private EntityRepository $pageRepository;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->pageRepository = $this->em->getRepository(Page::class);
-    }
-
     public function testGetPage()
     {
-        for ($i = 0; $i < 5; ++$i) {
-            $page = $this->getEntity()->setName('Page '.$i);
+        for ($i = 0; $i < 26; ++$i) {
+            $page = $this->getEntity()->setName('Page ' . $i);
 
             $this->em->persist($page);
         }
@@ -31,9 +24,16 @@ class PageRepositoryTest extends AbstractRepositoryTest
         $repository = $this->pageRepository->getPage();
 
         $this->assertInstanceOf(Paginator::class, $repository);
-        $this->assertEquals(5, $repository->getResultCount());
-        $this->assertEquals(1, $repository->getTotalPages());
-        $this->assertCount(5, $repository->getData());
+        $this->assertEquals(26, $repository->getResultCount());
+        $this->assertEquals(2, $repository->getTotalPages());
+        $this->assertCount(25, $repository->getData());
+
+        $repository = $this->pageRepository->getPage(2);
+
+        $this->assertInstanceOf(Paginator::class, $repository);
+        $this->assertEquals(26, $repository->getResultCount());
+        $this->assertEquals(2, $repository->getTotalPages());
+        $this->assertCount(1, $repository->getData());
     }
 
     private function getEntity(): Page
@@ -47,5 +47,12 @@ class PageRepositoryTest extends AbstractRepositoryTest
         $page->setStatus(1);
 
         return $page;
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->pageRepository = $this->em->getRepository(Page::class);
     }
 }

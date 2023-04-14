@@ -34,7 +34,7 @@ class PageControllerTest extends AbstractControllerTest
 
     public function testShow()
     {
-        $this->client->request('get', self::URL.'1');
+        $this->client->request('get', self::URL . '1');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertJsonDocumentMatchesSchema(
@@ -73,7 +73,7 @@ class PageControllerTest extends AbstractControllerTest
 
     public function testUpdate()
     {
-        $this->client->request('put', self::URL.'1', [], [], [], json_encode([
+        $this->client->request('put', self::URL . '1', [], [], [], json_encode([
             'name' => 'Name',
             'content' => '<p>Content</p>',
             'url' => 'test-url',
@@ -95,7 +95,7 @@ class PageControllerTest extends AbstractControllerTest
 
     public function testDelete()
     {
-        $this->client->request('delete', self::URL.'1');
+        $this->client->request('delete', self::URL . '1');
 
         $this->assertResponseStatusCodeSame(204);
     }
