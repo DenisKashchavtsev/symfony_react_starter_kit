@@ -27,7 +27,7 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @throws \Exception
      */
-    public function getUsers($page = 1): Paginator
+    public function getPage($page = 1): Paginator
     {
         $query = $this->getEntityManager()
             ->createQueryBuilder()

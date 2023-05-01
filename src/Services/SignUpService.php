@@ -5,7 +5,9 @@ namespace App\Services;
 use App\Entity\User;
 use App\Model\Request\SignupRequest;
 use App\Repository\UserRepository;
+use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 readonly class SignUpService
@@ -16,7 +18,7 @@ readonly class SignUpService
     {
     }
 
-    public function signUp(SignUpRequest $signUpRequest): \Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse|\Symfony\Component\HttpFoundation\Response
+    public function signUp(SignUpRequest $signUpRequest): JWTAuthenticationSuccessResponse|Response|null
     {
         if ($this->userRepository->existsByEmail($signUpRequest->getEmail())) {
             throw new \Exception('UserAlreadyExistsException');
