@@ -1,24 +1,24 @@
-import http from "../utils/http-common";
+import axiosInstance from "../api/axiosInstance";
 
 class PageDataService {
     getAll() {
-        return http.get("/pages/");
+        return axiosInstance.get("/pages/");
     }
 
     get(id) {
-        return http.get(`/pages/${id}`);
+        return axiosInstance.get(`/pages/${id}`);
     }
 
     create(data) {
-        return http.post("/pages/", data);
+        return axiosInstance.post("/pages/", data);
     }
 
     update(id, data) {
-        return http.put(`/pages/${id}`, data);
+        return axiosInstance.put(`/pages/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/pages/${id}`);
+        return axiosInstance.delete(`/pages/${id}`);
     }
 }
 

@@ -36,7 +36,7 @@ class Paginator
         return $this->resultCount;
     }
 
-    public function getData(): iterable
+    public function getData(): array
     {
         return $this->ormPaginator->getIterator()->getArrayCopy();
     }

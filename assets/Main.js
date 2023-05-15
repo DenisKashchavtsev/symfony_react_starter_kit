@@ -12,16 +12,20 @@ import store from "./store";
 import {Provider} from "react-redux";
 import PageCreate from "./pages/admin/page/PageCreate";
 import PageEdit from "./pages/admin/page/PageEdit";
+import Login from "./pages/admin/Login";
 
 function Main() {
     return (
         <Router>
             <Routes>
+
                 <Route exact path="/" element={<Home/>}/>
                 <Route path="/blog" element={<Blog/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
+
                 <Route path="/admin" element={<Dashboard/>}/>
+                <Route path="/admin/login" element={<Login/>}/>
 
                 <Route path="/pages" element={<PageList/>}/>
                 <Route path="/pages/create" element={<PageCreate/>}/>
@@ -32,8 +36,6 @@ function Main() {
         </Router>
     );
 }
-
-export default Main;
 
 if (document.getElementById('app')) {
     const rootElement = document.getElementById("app");
