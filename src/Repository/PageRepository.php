@@ -6,7 +6,6 @@ use App\Entity\Page;
 use App\Utils\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
 
 /**
  * @extends ServiceEntityRepository<Page>
@@ -24,7 +23,7 @@ class PageRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function getPage($page = 1): Paginator
     {

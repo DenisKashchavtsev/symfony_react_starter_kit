@@ -14,7 +14,7 @@ class PageRepositoryTest extends AbstractRepositoryTest
     public function testGetPage()
     {
         for ($i = 0; $i < 26; ++$i) {
-            $page = $this->getEntity()->setName('Page ' . $i);
+            $page = $this->getEntity()->setName('Page '.$i);
 
             $this->em->persist($page);
         }

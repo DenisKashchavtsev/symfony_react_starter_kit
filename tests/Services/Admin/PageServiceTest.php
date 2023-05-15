@@ -28,7 +28,7 @@ class PageServiceTest extends AbstractTestCase
             ->willReturn(1);
         $paginator->expects($this->once())
             ->method('getData')
-            ->willReturn([(array)$this->getEntity()]);
+            ->willReturn([(array) $this->getEntity()]);
 
         $this->pageRepository->expects($this->once())
             ->method('getPage')
@@ -39,7 +39,7 @@ class PageServiceTest extends AbstractTestCase
 
         $expected = (new PaginatorResponse())
             ->setMeta(1, 1)
-            ->setData([(array)$this->getEntity()]);
+            ->setData([(array) $this->getEntity()]);
 
         $this->assertEquals($expected, $service);
     }

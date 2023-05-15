@@ -4,7 +4,6 @@ namespace App\Utils;
 
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as OrmPaginator;
-use Exception;
 
 class Paginator
 {
@@ -12,19 +11,19 @@ class Paginator
     private ?int $resultCount = null;
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct(QueryBuilder $query, int $page, int $limit = 25)
     {
         $query = $query->setMaxResults($limit)
-            ->setFirstResult($page === 1 ? 0 : ($page - 1) * $limit);
+            ->setFirstResult(1 === $page ? 0 : ($page - 1) * $limit);
 
         $this->ormPaginator = new OrmPaginator($query, false);
     }
 
     public function getTotalPages(): int
     {
-        return (int)ceil($this->getResultCount() / $this->ormPaginator->getQuery()->getMaxResults());
+        return (int) ceil($this->getResultCount() / $this->ormPaginator->getQuery()->getMaxResults());
     }
 
     public function getResultCount(): int

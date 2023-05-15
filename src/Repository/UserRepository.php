@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Utils\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
 
 /**
  * @extends ServiceEntityRepository<User>
@@ -26,7 +25,7 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function getUsers($page = 1): Paginator
     {
@@ -66,7 +65,7 @@ class UserRepository extends ServiceEntityRepository
     {
         $user = $this->find($userId);
         if (null === $user) {
-            throw new Exception('UserNotFoundException');
+            throw new \Exception('UserNotFoundException');
         }
 
         return $user;
