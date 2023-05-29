@@ -8,7 +8,6 @@ use App\Utils\Paginator;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserRepositoryTest extends AbstractRepositoryTest
 {
@@ -17,7 +16,7 @@ class UserRepositoryTest extends AbstractRepositoryTest
     public function testGetPage()
     {
         for ($i = 0; $i < 26; ++$i) {
-            $user = $this->getEntity()->setEmail($i . '_demo@demo.com');
+            $user = $this->getEntity()->setEmail($i.'_demo@demo.com');
 
             $this->em->persist($user);
         }
