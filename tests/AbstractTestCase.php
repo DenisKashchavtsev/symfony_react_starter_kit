@@ -12,9 +12,9 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Sets a protected property on a given object via reflection.
      *
-     * @param $object - instance in which protected value is being modified
+     * @param $object   - instance in which protected value is being modified
      * @param $property - property on instance being modified
-     * @param $value - new value of the property being modified
+     * @param $value    - new value of the property being modified
      *
      * @throws \ReflectionException
      */
