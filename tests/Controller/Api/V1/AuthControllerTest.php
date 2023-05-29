@@ -24,7 +24,6 @@ class AuthControllerTest extends AbstractControllerTest
         $this->assertJsonDocumentMatchesSchema(json_decode($this->client->getResponse()->getContent()), ['token']);
 
         $this->assertResponseStatusCodeSame(200);
-
     }
 
     /**
@@ -32,7 +31,7 @@ class AuthControllerTest extends AbstractControllerTest
      */
     public function testSignUp()
     {
-        $this->client->request('post', self::URL . 'signUp', [], [], ['CONTENT_TYPE' => 'application/json'],
+        $this->client->request('post', self::URL.'signUp', [], [], ['CONTENT_TYPE' => 'application/json'],
             json_encode([
                 'firstName' => 'FirstName',
                 'lastName' => 'LastName',
@@ -41,11 +40,9 @@ class AuthControllerTest extends AbstractControllerTest
                 'confirmPassword' => 'demo1234',
             ]));
 
-
         $this->assertJsonDocumentMatchesSchema(json_decode($this->client->getResponse()->getContent()), ['token']);
 
         $this->assertResponseStatusCodeSame(200);
-
     }
 
     protected function setUp(): void
