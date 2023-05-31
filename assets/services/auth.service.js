@@ -1,9 +1,9 @@
 import axiosInstance from '../api/axiosInstance';
 
-class PageDataService {
+class AuthService {
     login(credentials) {
         return axiosInstance.post("/auth/login", credentials);
     }
 }
 
-export default new PageDataService();
+export default new AuthService();

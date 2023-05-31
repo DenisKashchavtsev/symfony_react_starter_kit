@@ -7,7 +7,7 @@ import store from "../../store";
 
 function Dashboard() {
     const [credentials, setCredentials] = useState({
-        username: '',
+        email: '',
         password: '',
     })
 
@@ -34,13 +34,13 @@ function Dashboard() {
                     <div className="three columns">
 
                         <div>
-                            <label htmlFor="name">username</label>
+                            <label htmlFor="name">email</label>
                             <input
                                 className="u-full-width"
                                 type="text"
                                 id="name"
-                                onChange={(e) => handleCredentials(e, 'username')}
-                                value={credentials.username}
+                                onChange={(e) => handleCredentials(e, 'email')}
+                                value={credentials.email}
                             />
                             {errors && errors.name ?
                                 <div style={{color: 'red'}}>{errors.name}</div>
